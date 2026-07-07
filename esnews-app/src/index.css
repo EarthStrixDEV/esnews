@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* Custom variant so `dark:` utilities respond to the .dark class (not OS pref) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Semantic palette. @theme maps Tailwind color utilities (bg-paper, text-ink…)
+ * onto runtime CSS variables so toggling .dark on <html> re-themes the whole
+ * app without touching a single component. `ink` = foreground, `paper` =
+ * background — they swap meaning between light and dark.
+ */
+:root {
+  --c-ink: #0b0d12;
+  --c-paper: #ffffff;
+  --c-cream: #faf7f2;
+  --c-accent: #2b5cff;
+  --c-accent-soft: #eaf0ff;
+}
+
+.dark {
+  --c-ink: #e7e9ee;
+  --c-paper: #0d0f14;
+  --c-cream: #171a21;
+  --c-accent: #6b8cff;
+  --c-accent-soft: #1b2540;
+}
+
+@theme inline {
+  --font-display: "Bricolage Grotesque", sans-serif;
+  --font-body: "Figtree", sans-serif;
+
+  --color-ink: var(--c-ink);
+  --color-paper: var(--c-paper);
+  --color-cream: var(--c-cream);
+  --color-accent: var(--c-accent);
+  --color-accent-soft: var(--c-accent-soft);
+
+  /* Always-dark surface for chrome that stays dark in both themes
+     (footer, top bar, mini player, dark cards). Does NOT swap with the
+     semantic ink/paper pair, so text-white on it is always legible. */
+  --color-surface-dark: #0b0d12;
+
+  --color-cat-ai: #7c3aed;
+  --color-cat-tech: #2b5cff;
+  --color-cat-cloud: #0891b2;
+  --color-cat-it: #ea580c;
+  --color-cat-security: #dc2626;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  /* raw CSS must reference the source vars (--c-*); Tailwind's @theme inline
+     folds --color-* into utility classes and does NOT emit them as variables */
+  color: var(--c-ink);
+  background: var(--c-paper);
+  cursor: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a, button, [role="button"] {
+  cursor: none;
+}
+
+/* fallback: touch devices get normal cursor */
+@media (hover: none) {
+  body, a, button, [role="button"] {
+    cursor: auto;
+  }
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* MiniPlayer equalizer bars */
+@keyframes eq {
+  0%, 100% { height: 30%; }
+  50% { height: 100%; }
+}
+
+/* ArticleImage loading skeleton — defined as a plain class because Tailwind v4
+   does not reliably emit an animate-[…] utility that references a custom
+   @keyframes, so the shimmer is wired up directly here. */
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.img-skeleton {
+  background: linear-gradient(
+    100deg,
+    var(--c-cream) 30%,
+    var(--c-accent-soft) 50%,
+    var(--c-cream) 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
