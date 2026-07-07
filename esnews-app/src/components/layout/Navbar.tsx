@@ -35,6 +35,9 @@ function Navbar() {
           <NavLink to="/news" className={linkClass}>
             Top News
           </NavLink>
+          <NavLink to="/bookmarks" className={linkClass}>
+            Bookmarks
+          </NavLink>
           {CATEGORIES.map((cat) => (
             <NavLink
               key={cat}
@@ -90,6 +93,9 @@ function Navbar() {
             </NavLink>
             <NavLink to="/news" className={linkClass} onClick={() => setOpen(false)}>
               Top News
+            </NavLink>
+            <NavLink to="/bookmarks" className={linkClass} onClick={() => setOpen(false)}>
+              Bookmarks
             </NavLink>
             {CATEGORIES.map((cat) => (
               <NavLink

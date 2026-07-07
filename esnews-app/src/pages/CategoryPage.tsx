@@ -3,6 +3,7 @@ import { CATEGORIES, type Category } from '../data/articles'
 import { useNews } from '../context/NewsContext'
 import CategoryBadge from '../components/ui/CategoryBadge'
 import ArticleImage from '../components/ui/ArticleImage'
+import BookmarkButton from '../components/ui/BookmarkButton'
 import NotFound from './NotFound'
 
 function CategoryPage() {
@@ -30,26 +31,29 @@ function CategoryPage() {
 
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((a) => (
-          <Link key={a.id} to={`/article/${a.id}`} className="group">
-            <div className="overflow-hidden rounded-xl">
-              <ArticleImage
-                src={a.image}
-                alt=""
-                className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy"
-              />
-            </div>
-            <div className="mt-4">
-              <CategoryBadge category={a.category} linked={false} />
-              <h2 className="mt-3 line-clamp-2 font-display text-xl leading-snug font-bold transition-colors group-hover:text-accent">
-                {a.title}
-              </h2>
-              <p className="mt-2 line-clamp-2 text-sm text-ink/60">{a.excerpt}</p>
-              <p className="mt-3 text-xs text-ink/40">
-                By <span className="font-semibold text-ink/60 uppercase">{a.author}</span> · {a.date} · {a.readTime}
-              </p>
-            </div>
-          </Link>
+          <div key={a.id} className="group relative">
+            <Link to={`/article/${a.id}`}>
+              <div className="overflow-hidden rounded-xl">
+                <ArticleImage
+                  src={a.image}
+                  alt=""
+                  className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <div className="mt-4">
+                <CategoryBadge category={a.category} linked={false} />
+                <h2 className="mt-3 line-clamp-2 font-display text-xl leading-snug font-bold transition-colors group-hover:text-accent">
+                  {a.title}
+                </h2>
+                <p className="mt-2 line-clamp-2 text-sm text-ink/60">{a.excerpt}</p>
+                <p className="mt-3 text-xs text-ink/40">
+                  By <span className="font-semibold text-ink/60 uppercase">{a.author}</span> · {a.date} · {a.readTime}
+                </p>
+              </div>
+            </Link>
+            <BookmarkButton articleId={a.id} className="absolute top-3 right-3" />
+          </div>
         ))}
       </div>
     </div>
