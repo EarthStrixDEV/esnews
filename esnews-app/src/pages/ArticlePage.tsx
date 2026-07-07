@@ -1,14 +1,18 @@
+import { useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useNews } from '../context/NewsContext'
 import CategoryBadge from '../components/ui/CategoryBadge'
 import ArticleImage from '../components/ui/ArticleImage'
 import ListenButton from '../components/ui/ListenButton'
+import BookmarkButton from '../components/ui/BookmarkButton'
+import ReadingProgressBar from '../components/ui/ReadingProgressBar'
 import NotFound from './NotFound'
 
 function ArticlePage() {
   const { id } = useParams()
   const { articles, getArticle } = useNews()
   const article = id ? getArticle(id) : undefined
+  const bodyRef = useRef<HTMLDivElement>(null)
 
   if (!article) return <NotFound />
 
@@ -17,7 +21,9 @@ function ArticlePage() {
     .slice(0, 3)
 
   return (
-    <article>
+    <>
+      <ReadingProgressBar targetRef={bodyRef} />
+      <article>
       {/* Hero */}
       <div className="relative">
         <ArticleImage
@@ -47,9 +53,10 @@ function ArticlePage() {
       </div>
 
       {/* Body */}
-      <div className="mx-auto max-w-3xl px-4 py-14">
-        <div className="mb-8">
+      <div ref={bodyRef} className="mx-auto max-w-3xl px-4 py-14">
+        <div className="mb-8 flex items-center gap-3">
           <ListenButton articles={[article]} label="Listen to this story" />
+          <BookmarkButton articleId={article.id} />
         </div>
         <p className="border-l-4 border-accent pl-5 font-display text-xl leading-relaxed font-medium text-ink/80">
           {article.excerpt}
@@ -123,6 +130,7 @@ function ArticlePage() {
         </div>
       )}
     </article>
+    </>
   )
 }
 
