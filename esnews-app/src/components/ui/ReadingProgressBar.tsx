@@ -45,7 +45,7 @@ function ReadingProgressBar({ targetRef }: Props) {
       aria-valuemin={0}
       aria-valuemax={100}
       aria-label="Reading progress"
-      className="fixed inset-x-0 top-0 z-50 h-1 bg-transparent"
+      className="fixed inset-x-0 top-0 z-[60] h-1 bg-transparent"
     >
       <div
         className="h-full bg-accent transition-[width] duration-100 ease-linear"
