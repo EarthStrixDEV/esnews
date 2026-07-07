@@ -122,7 +122,7 @@ function ArticlePage() {
                   <h3 className="mt-3 line-clamp-2 font-display leading-snug font-bold transition-colors group-hover:text-accent">
                     {a.title}
                   </h3>
-                  <p className="mt-2 text-xs text-ink/40">{a.date}</p>
+                  <p className="mt-2 text-xs text-ink/60">{a.date}</p>
                 </Link>
               ))}
             </div>

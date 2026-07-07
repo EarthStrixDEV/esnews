@@ -25,7 +25,8 @@ function RefreshButton() {
       type="button"
       onClick={handle}
       disabled={refreshing}
-      className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-2.5 font-display text-sm font-bold text-ink transition-colors hover:border-accent hover:text-accent disabled:opacity-60"
+      aria-label="Refresh articles"
+      className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-2.5 font-display text-sm font-bold text-ink transition-colors hover:border-accent hover:text-accent focus-visible:border-accent focus-visible:text-accent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 disabled:opacity-60"
     >
       <svg
         width="16"

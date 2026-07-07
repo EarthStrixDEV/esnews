@@ -16,7 +16,7 @@ function Pagination({ page, totalPages, makeLink }: Props) {
     `grid h-10 w-10 place-items-center rounded-lg font-display font-bold transition-colors ${
       disabled
         ? 'pointer-events-none text-ink/20'
-        : 'text-ink hover:bg-accent hover:text-white'
+        : 'text-ink hover:bg-accent hover:text-white focus-visible:bg-accent focus-visible:text-white focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2'
     }`
 
   return (
@@ -32,7 +32,7 @@ function Pagination({ page, totalPages, makeLink }: Props) {
           className={`grid h-10 w-10 place-items-center rounded-lg font-display font-bold transition-colors ${
             p === page
               ? 'bg-accent text-white'
-              : 'bg-cream text-ink hover:bg-accent hover:text-white'
+              : 'bg-cream text-ink hover:bg-accent hover:text-white focus-visible:bg-accent focus-visible:text-white focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2'
           }`}
         >
           {p}

@@ -46,7 +46,7 @@ function DateFilter({ from, to, onChange, onClear }: Props) {
       <div className="flex flex-wrap items-end gap-x-6 gap-y-4">
         {/* Date length presets */}
         <div>
-          <p className="mb-2 font-display text-xs font-bold tracking-[0.15em] text-ink/50 uppercase">
+          <p className="mb-2 font-display text-xs font-bold tracking-[0.15em] text-ink/60 uppercase">
             Date length
           </p>
           <div className="flex flex-wrap gap-1 rounded-lg bg-paper p-1">
@@ -58,7 +58,7 @@ function DateFilter({ from, to, onChange, onClear }: Props) {
                 className={`rounded-md px-3 py-1.5 font-display text-sm font-semibold transition-colors ${
                   activePreset === p.label
                     ? 'bg-accent text-white'
-                    : 'text-ink/60 hover:text-ink'
+                    : 'text-ink/60 hover:text-ink focus-visible:text-ink focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2'
                 }`}
               >
                 {p.label}
@@ -69,7 +69,7 @@ function DateFilter({ from, to, onChange, onClear }: Props) {
 
         {/* Explicit range pickers */}
         <label className="block">
-          <span className="mb-2 block font-display text-xs font-bold tracking-[0.15em] text-ink/50 uppercase">
+          <span className="mb-2 block font-display text-xs font-bold tracking-[0.15em] text-ink/60 uppercase">
             From
           </span>
           <input
@@ -81,7 +81,7 @@ function DateFilter({ from, to, onChange, onClear }: Props) {
           />
         </label>
         <label className="block">
-          <span className="mb-2 block font-display text-xs font-bold tracking-[0.15em] text-ink/50 uppercase">
+          <span className="mb-2 block font-display text-xs font-bold tracking-[0.15em] text-ink/60 uppercase">
             To
           </span>
           <input
@@ -97,7 +97,7 @@ function DateFilter({ from, to, onChange, onClear }: Props) {
           <button
             type="button"
             onClick={onClear}
-            className="ml-auto font-display text-sm font-bold text-accent hover:underline"
+            className="ml-auto font-display text-sm font-bold text-accent hover:underline focus-visible:underline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
           >
             Clear dates
           </button>

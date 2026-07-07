@@ -33,7 +33,7 @@ function MiniPlayer() {
           </p>
           <Link
             to={`/article/${track.articleId}`}
-            className="mt-0.5 block truncate font-display text-sm font-semibold hover:text-accent"
+            className="mt-0.5 block truncate font-display text-sm font-semibold hover:text-accent focus-visible:text-accent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
             title={track.title}
           >
             {track.title}
@@ -43,7 +43,7 @@ function MiniPlayer() {
           type="button"
           onClick={stop}
           aria-label="Close player"
-          className="shrink-0 text-white/40 transition-colors hover:text-white"
+          className="shrink-0 text-white/40 transition-colors hover:text-white focus-visible:text-white focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
         >
           ✕
         </button>
@@ -53,7 +53,7 @@ function MiniPlayer() {
         <button
           type="button"
           onClick={cycleRate}
-          className="w-12 rounded-md bg-white/10 py-1 font-display text-xs font-bold transition-colors hover:bg-white/20"
+          className="w-12 rounded-md bg-white/10 py-1 font-display text-xs font-bold transition-colors hover:bg-white/20 focus-visible:bg-white/20 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
           aria-label="Playback speed"
         >
           {rate}x
@@ -64,7 +64,7 @@ function MiniPlayer() {
             onClick={prev}
             disabled={index === 0}
             aria-label="Previous story"
-            className="grid h-9 w-9 place-items-center rounded-full bg-white/10 transition-colors hover:bg-white/20 disabled:opacity-30"
+            className="grid h-9 w-9 place-items-center rounded-full bg-white/10 transition-colors hover:bg-white/20 focus-visible:bg-white/20 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 disabled:opacity-30"
           >
             ⏮
           </button>
@@ -72,7 +72,7 @@ function MiniPlayer() {
             type="button"
             onClick={toggle}
             aria-label={playing ? 'Pause' : 'Play'}
-            className="grid h-11 w-11 place-items-center rounded-full bg-accent text-lg transition-transform hover:scale-105"
+            className="grid h-11 w-11 place-items-center rounded-full bg-accent text-lg transition-transform hover:scale-105 focus-visible:scale-105 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
           >
             {playing ? '⏸' : '▶'}
           </button>
@@ -81,7 +81,7 @@ function MiniPlayer() {
             onClick={next}
             disabled={index >= tracks.length - 1}
             aria-label="Next story"
-            className="grid h-9 w-9 place-items-center rounded-full bg-white/10 transition-colors hover:bg-white/20 disabled:opacity-30"
+            className="grid h-9 w-9 place-items-center rounded-full bg-white/10 transition-colors hover:bg-white/20 focus-visible:bg-white/20 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 disabled:opacity-30"
           >
             ⏭
           </button>

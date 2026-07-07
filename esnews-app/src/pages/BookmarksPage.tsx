@@ -22,7 +22,7 @@ function BookmarksPage() {
         <h1 className="mt-2 font-display text-5xl font-extrabold tracking-tight">
           Bookmarks
         </h1>
-        <p className="mt-3 text-ink/50">
+        <p className="mt-3 text-ink/60">
           {items.length} {items.length === 1 ? 'story' : 'stories'} saved
         </p>
       </header>
@@ -54,7 +54,7 @@ function BookmarksPage() {
                     {a.title}
                   </h2>
                   <p className="mt-2 line-clamp-2 text-sm text-ink/60">{a.excerpt}</p>
-                  <p className="mt-3 text-xs text-ink/40">
+                  <p className="mt-3 text-xs text-ink/60">
                     By <span className="font-semibold text-ink/60 uppercase">{a.author}</span> · {a.date} · {a.readTime}
                   </p>
                 </div>
